@@ -1,15 +1,4 @@
 module ApplicationHelper
-  # def check_signed_in
-  #   logout = (link_to "Logout", destroy_user_session_path, method: :delete)
-  #   signUp = (link_to 'Sign Up', new_user_registration_path)
-  #   signIn = (link_to 'Sign In', new_user_session_path)
-  #   if user_signed_in?
-  #     content_tag(:p, current_user.name + ' now you can see the author.') +
-  #     content_tag(:p, logout)
-  #   else
-  #     content_tag(:p, signUp + ' or ' + signIn + ' to see the secrets.')
-  #   end
-  # end
   def check_signed_in
     logout = (link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link")
     signUp = (link_to 'Sign Up', new_user_registration_path, class: "nav-link")
@@ -24,13 +13,3 @@ module ApplicationHelper
     end
   end
 end
-          # <li class="nav-item active">
-          #   <a class="nav-link" href="#">
-          #     <i class="fab fa-facebook-f"></i> Facebook
-          #     <span class="sr-only">(current)</span>
-          #   </a>
-          # </li>
-          # <li class="nav-item">
-          #   <a class="nav-link" href="#">
-          #     <i class="fab fa-instagram"></i> Instagram</a>
-          # </li>
