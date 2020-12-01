@@ -1,6 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
+<% if user_signed_in? %>
+<p>
+  <%= current_user.name %> now you can see the secrets!
+</p>
+<p>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+</p>
+<% else %>
+<p>
+  <%= link_to 'Sign Up', new_user_registration_path %> or <%= link_to 'Sign In', new_user_session_path %> to see the secrets
+</p>
+<% end %>
 
 <table>
   <thead>
@@ -14,14 +26,15 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.body %></td>
+      <td><%= post.user.name %></td>
+      <% if user_signed_in? %>
+      <td><%= link_to 'Show', "posts#index" %></td>
+    
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
